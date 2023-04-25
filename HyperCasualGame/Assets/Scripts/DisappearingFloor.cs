@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class DisappearingFloor : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private SpriteRenderer SpriteRenderer;
     void Start()
     {
-        
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        StartCoroutine(DisappearReady());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator DisappearReady()
     {
-        
+        for (int i = 0; i < 5; i++)
+        {
+            SpriteRenderer.DOColor(new Color(1, 1, 1, 1), 0.5f);
+            yield return new WaitForSeconds(0.5f);
+            SpriteRenderer.DOColor(new Color(1, 1, 1, 50 / 255f), 0.5f);
+            yield return new WaitForSeconds(0.5f);
+        }
+        gameObject.SetActive(false);
     }
 }
