@@ -31,7 +31,7 @@ public class StageManager : MonoBehaviour
         RedColor = new Color(1, red / 255f, red / 255f, 1);
         TimeText.colorGradient = new VertexGradient(NormalColor, NormalColor, RedColor, RedColor);
 
-        if(isDraw)
+        if (isDraw)
         {
             Vector2 pos = Aim.transform.position;
 
